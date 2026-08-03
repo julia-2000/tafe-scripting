@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+/* First day 21.07.2026 */
+<people>
+    <person>
+        <name>Callum Thompson</name>
+        <age>28</age>
+        <city>Sydney</city>
+    </person>
+    <person>
+        <name>Poppy Jenkin</name>
+        <age>34</age>
+        <city>London</city>
+    </person>
+    <person>
+        <name>Lachlan Smith</name>
+        <age>22</age>
+        <city>Melbourne</city>
+    </person>
+    <person>
+        <name>Imogen Radcliffe</name>
+        <age>41</age>
+        <city>Manchester</city>
+    </person>
+</people>

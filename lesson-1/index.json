@@ -1,0 +1,19 @@
+"people": [
+    {
+        "name": "Callum Thompson",
+        "age": "28",
+        "city": "Sydney"
+    },
+        
+    {
+        "name": "Poppy Jenkin",
+        "age": "34",
+        "city": "London"
+    },
+       
+    {
+        "name": "callum Thompson",
+        "age": "28",
+        "city": "Sydney"
+    }
+]

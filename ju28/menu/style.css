@@ -1,0 +1,41 @@
+/*  Using tags  */
+header {
+    background-color: rgb(211, 235, 235);
+    margin-bottom: 15px;
+}
+/* Menu links */
+a {
+    color: black;
+    font-size: 22px;
+}
+
+a:hover {
+    color: lightgray;
+}
+
+/* Using class */
+.post {
+    border: 1px solid darkgray;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Using ID */
+#title {
+ text-align: center;
+ color: rgb(61, 61, 224);
+}
+
+.feed {
+    width: 600px;
+    margin: auto;
+}
+
+.content {
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+

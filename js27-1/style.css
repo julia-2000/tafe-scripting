@@ -1,0 +1,9 @@
+body{
+    background-color: beige;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 22px;
+}
+
+nav li{
+    list-style-type: none;
+}
