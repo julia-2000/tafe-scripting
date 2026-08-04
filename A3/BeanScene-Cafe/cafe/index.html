@@ -5,173 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bean Scene Cafe</title>
-    <style>
-        body {
-            background-color: #f6f4e4;
-            color: #333;
-            font-family: Arial, Helvetica, sans-serif;
-
-        }
-
-        header {
-            background-color: #5C4033;
-            color: white;
-            padding: 20px 40px;
-        }
-
-        .logo {
-
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: #ffd166;
-        }
-
-        @media (max-width:600px) {
-            nav {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        /* HERO */
-        .hero {
-            background-color: #d9b382;
-            text-align: center;
-            padding: 70px 20px;
-
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-            margin-bottom: 30px;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn {
-            background: #5c4033;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* CARD */
-        .menu-grid {}
-
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: center;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .icon {
-            font-size: 60px;
-        }
-
-        .card h3 {
-            margin: 15px 0;
-        }
-
-        .price {
-            color: #8b4513;
-            font-size: 22px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-
-        .card button {
-            padding: 12px;
-            border: none;
-            background-color: #5c4033;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .card button:hover {
-            background-color: #3d2918;
-        }
-
-        /* ABOUT */
-        .about {
-            background-color: white;
-            max-width: 900px;
-            margin: auto;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        /* FOOTER  
-        Style for the Footer
-        */
-        footer {
-            background-color: #5C4033;
-            color: white;
-            text-align: center;
-            padding: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Header Menu -->
+
+    <!-- Menu Header -->
     <header>
         <nav>
-            <div class="logo">Bean Scene ☕</div>
+            <div class="logo">☕ Bean Scene Cafe ☕</div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -182,7 +29,7 @@
         <p>Welcome to Bean Scene Cafe, where every cup is brew with passion. Enjoy premium coffee, delicious desserts,
             and relaxing atmosphere.</p>
         <div class="buttons">
-            <a href="#" class="btn">View Menu</a>
+            <a href="menu.html" class="btn">View Menu</a>
             <a href="#" class="btn">Visit Us</a>
         </div>
     </section>
@@ -190,66 +37,61 @@
     <!-- Cards -->
     <section>
         <h2>Featured Menu</h2>
+        <!-- Featured Menu -->
         <div class="menu-grid">
             <div class="card">
-                <div class="icon">
-                    <h3>Espresso</h3>
-                    <p>Reach Italian Style Coffee</p>
-                    <div class="price">
-                        $4.5
-                    </div>
-                    <button>Ordere Now</button>
+                <div class="icon">☕</div>
+                <h3>Espresso</h3>
+                <p>Rich Italian Style Coffee</p>
+                <div class="price">
+                    $4.50
                 </div>
+                <button>Order Now</button>
             </div>
             <div class="card">
-                <div class="icon">
-                    <h3>Espresso</h3>
-                    <p>Reach Italian Style Coffee</p>
-                    <div class="price">
-                        $4.5
-                    </div>
-                    <button>Ordere Now</button>
+                <div class="icon">☕</div>
+                <h3>Espresso</h3>
+                <p>Rich Italian Style Coffee</p>
+                <div class="price">
+                    $4.50
                 </div>
+                <button>Order Now</button>
             </div>
             <div class="card">
-                <div class="icon">
-                    <h3>Espresso</h3>
-                    <p>Reach Italian Style Coffee</p>
-                    <div class="price">
-                        $4.5
-                    </div>
-                    <button>Ordere Now</button>
+                <div class="icon">☕</div>
+                <h3>Espresso</h3>
+                <p>Rich Italian Style Coffee</p>
+                <div class="price">
+                    $4.50
                 </div>
+                <button>Order Now</button>
             </div>
             <div class="card">
-                <div class="icon">
-                    <h3>Espresso</h3>
-                    <p>Reach Italian Style Coffee</p>
-                    <div class="price">
-                        $4.5
-                    </div>
-                    <button>Ordere Now</button>
+                <div class="icon">☕</div>
+                <h3>Espresso</h3>
+                <p>Rich Italian Style Coffee</p>
+                <div class="price">
+                    $4.50
                 </div>
+                <button>Order Now</button>
             </div>
             <div class="card">
-                <div class="icon">
-                    <h3>Espresso</h3>
-                    <p>Reach Italian Style Coffee</p>
-                    <div class="price">
-                        $4.5
-                    </div>
-                    <button>Ordere Now</button>
+                <div class="icon">☕</div>
+                <h3>Espresso</h3>
+                <p>Rich Italian Style Coffee</p>
+                <div class="price">
+                    $4.5
                 </div>
+                <button>Order Now</button>
             </div>
             <div class="card">
-                <div class="icon">
-                    <h3>Espresso</h3>
-                    <p>Reach Italian Style Coffee</p>
-                    <div class="price">
-                        $4.5
-                    </div>
-                    <button>Ordere Now</button>
+                <div class="icon">☕</div>
+                <h3>Espresso</h3>
+                <p>Rich Italian Style Coffee</p>
+                <div class="price">
+                    $4.5
                 </div>
+                <button>Order Now</button>
             </div>
         </div>
     </section>
@@ -262,7 +104,6 @@
                 soluta et blanditiis eius quaerat. Sapiente asperiores voluptatem libero dolorum voluptatum! Dolore
                 aspernatur atque et amet.</p>
         </div>
-
     </section>
 
     <!-- Footer -->
