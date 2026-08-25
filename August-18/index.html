@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM JavaScript</title>
+</head>
+
+<body>
+    <h1 id="title">JavaScript in the Browser.</h1>
+
+    <!-- Add activity before open the button. -->
+    <button onclick="toggleMessage()">Toggle Message</button>
+
+
+    <div id="message" style="display: none;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos
+        repudiandae quam tempore
+        nostrum
+        repellendus rerum ut aut consequuntur iste quasi blanditiis laboriosam nam, provident ducimus?</div>
+
+    <script>
+        // console.log(window.innerWidth);
+        // Window object method - Alert which is provide option to get info from user.
+        // window.alert("Enter your Name: ");
+
+        // Contain info that element has been targeted by id. Retreve shadov elemnt of h1.
+        let title = document.getElementById("title");
+        // Change content of the element.
+        title.innerText = "JavaScript play in the Browser.";
+
+        // InnerHtml add html element - construct to the targeted element.
+        // title.innerHTML = `
+        // <p class="item">1</p>
+        // <p class="item">2</p>
+        // <p class="item">3</p>
+        // `;
+
+        // Fucntion for the button oclick
+        // function sayHello() {
+        //     console.log("Hello World!");
+        // }
+
+        // Show/Hide Message Code.
+        let message = document.getElementById("message");
+        // Show/Hide Message Function
+        function toggleMessage() {
+            if (message.style.display === "none") {
+                message.style.display = "block";
+            }
+            else {
+                message.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

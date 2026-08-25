@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizz Buzz</title>
+</head>
+
+<body>
+
+    <h2>FizzBuzz</h2>
+    <button onclick="showFizzBuzz()">Show Results</button>
+    <div id="result">
+
+    </div>
+
+
+    <script>
+        let result = document.getElementById("result");
+
+        function showFizzBuzz() {
+            let output = "";
+
+            for (let number = 1; number <= 30; number++) {
+                if (number % 3 === 0 && number % 5 === 0) {
+                    output = output + "FizzBuzz <br>";
+                }
+                else if (number % 3 === 0) {
+                    output = output + "Fizz <br>";
+                }
+                else if (number % 5 === 0) {
+                    output = output + "Buzz <br>";
+                }
+                else {
+                    output = output + number + "<br>";
+                }
+            }
+            // console.log(output);
+            result.innerHTML = output;
+            // result.innerText = output;
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query HTML</title>
+</head>
+
+<body>
+    <div id="name">Name</div>
+    <div id="email">Email</div>
+    <div id="address">Address</div>
+
+    <div>
+        <ul>
+            <li class="line">1</li>
+            <li class="line">2</li>
+            <li class="line">3</li>
+            <li class="line">4</li>
+            <li class="line">5</li>
+        </ul>
+    </div>
+
+</body>
+<script>
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let address = document.getElementById("address");
+    name.style.background = "red";
+    document.querySelectorAll("li").forEach(li => {
+        li.style.color = "green";
+    });
+
+
+    // Target is body element
+    document.querySelector("body").style.background = "yellow";
+
+
+
+</script>
+
+</html>

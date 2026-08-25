@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+    <style>
+        /* Pointing to the element */
+        #different {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li><a href="">abc</a></li>
+            <li><a id="different" href="">123</a></li>
+            <li><a href="">ghi</a></li>
+        </ul>
+    </div>
+
+    <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, earum! Quisquam fugiat
+        exercitationem laboriosam aspernatur magnam ad, libero, delectus nemo accusamus voluptates possimus quod?
+        Blanditiis.</div>
+
+    <!-- Run script the last -->
+    <script>
+        let a = document.getElementById("different");
+        a.innerHTML = "This is new value";
+        a.style.color = "red";
+        a.style.background = "gray";
+        // console.log(a);
+        a.style.margin = "20px";
+
+        let text = document.querySelector(".text");
+        // text.innerHTML = "New Info";
+        text.style.background = "yellow";
+        text.style.padding = "20px";
+
+    </script>
+</body>
+
+</html>
