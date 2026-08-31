@@ -5,10 +5,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: hsla(193, 46%, 43%, 0.7);
+            --secondary: hsl(36, 65%, 62%, 0.65);
+            --third: hsl(223, 12%, 29%, 0.65);
+            --fourth: hsl(32, 24%, 51%, 0.65);
+            --fifth: hsl(36, 65%, 62%, 0.65);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--third)), url("/images/AdobeStock_1178485938.jpeg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* HEARED */
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 30px;
+            margin: 20px 2%;
+            background-color: var(--primary);
+            padding: 1.5% 5%;
+        }
+
+        /* LOGO */
+        .logo {
+            width: 220px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        /* NAVIGATION MENU */
+        ul {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            list-style: none;
+        }
+
+        /* NAVIGATION LINKS */
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+
+
+        /* FOOTER */
+        footer {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 30px;
+            margin: 20px 2%;
+            background-color: var(--primary);
+            padding: 1.5% 5%;
+        }
+    </style>
 </head>
 
 <body>
+    <header>
+        <img src="images/GE_Logo-inline-on-white.png" alt="Geelos Enterprises Logo" class="logo">
 
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="tasks.html">Tasks</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+    </main>
+
+
+    <footer>
+        <ul class="policy">
+            <li><a href="policy/GE_Privacy-policy.pdf">Privacy Policy</a></li>
+            <li><a href="">|</a></li>
+            <li><a href="policy/GE_Internet-usage-policy.pdf">Internet Usage Policy</a></li>
+        </ul>
+
+    </footer>
 </body>
 
 </html>
