@@ -9,10 +9,56 @@
 </head>
 
 <body>
+    <header>
+        <div class="header container">
+            <h1></h1>
+            <p></p>
+        </div>
+    </header>
+
+    <main>
+        <h2></h2>
+        <p></p>
+        <div class="activity">
+            <h3></h3>
+            <p></p>
+            <div class="addProductForm">
+                <input type="text" name="inputName" id="inputName" placeholder="Product Name">
+                <input type="text" name="inputPrice" id="inputPrice" placeholder="Product Price" step="0.01" min="0">
+                <input type="text" name="inputQty" id="inputQty" placeholder="Product Quantity" min="1" value="1">
+                <button class="btn-add" id="btnAddProduct">Add Product</button>
+            </div>
+        </div>
+
+        <!-- Shopping Cart Table 1 -->
+        <h3>Cart Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="cartTableBody">
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
 
 
-
-    <script src="script.js"></script>
+    <script src="script-shopping-cart.js"></script>
 </body>
 
 </html>
