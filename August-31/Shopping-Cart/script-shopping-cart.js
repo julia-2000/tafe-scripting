@@ -189,4 +189,8 @@ tdQty.appendChild(qtyText);
 tdQty.appendChild(btnIncrease);
 tr.appendChild(tdQty);
 
+// =======================
+// 2. ARRAY ALGORITHMS
+// =======================
+
 
