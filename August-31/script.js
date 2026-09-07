@@ -1,85 +1,54 @@
-// // Method - manipulate objects or run operations on object
-// let stack = [10, 20];
-// console.log(stack);
-// stack.push(30);
-// console.log(stack);
-// // REMOVE ELEMENT FROM THE END OF ARRAY
-// stack.pop();
-// console.log(stack);
+console.log("Start");
 
-// Shift - operate at the begining of the Array - remove first element
-// let numbers = [10, 2, 5];
-// numbers.shift();
-// console.log(numbers);
-
-// // Unshift - operate at the begining of the Array - add first element to array
-// numbers.unshift(2)
-// console.log(numbers);
-
-// numbers.forEach(function (value, index) {
-//     console.log(`value: ${value}, index: ${index}`);
-// });
-
-// // Map - function
-// let numbers = [10, 2, 5];
-// // Assing Map to the prices - it is return new array
-// let prices = numbers.map(function (value) {
-//     return value * 2;
-// });
-
-// console.log(`value: ${numbers} and prices: ${prices}`);
-
-
-// let names = ["Yuliia", "Jack", "Jill"];
-// let output = names.map(function (name) {
-//     return `<p>${name}</p>`;
-// });
-
-// console.log(names, output);
-
-// // Covert data into storage
-// // Join - function
-// let joinString = output.join("\n");
-// let html = `
-// <div>
-// ${joinString}
-// </div>`;
-// console.log(html);
-
-// // Filter - function
-// let ages = [23, 13, 5, 78, 98];
-// let adults = ages.filter(function (age) {
-//     return age > 18;
-// })
-// console.log(`Adults: ${adults}`);
-
-
-// Include 
-let products = [
-    {
-        id: 100,
-        name: "mouse"
-    },
-    {
-        id: 101,
-        name: "screen"
-    },
-    {
-        id: 102,
-        name: "keyboard"
-    }
+// Shopping Cart
+let cart = [
+    { name: "Mechanical Keyboard", price: 120.00, qty: 1 },
+    { name: "Wireless Mouse", price: 60.00, qty: 2 },
+    { name: "HD Monitor", price: 300.00, qty: 1 }
 ];
 
-products.forEach(function (object) {
+// Should recieve 3 parameters - adding new item into the array
+function insertAlgoritm(array, index, value) {
+    // Creating new array item index and shifting all elements to the right
+    for (let i = array.length; i > index; i--) {
+        array[i] = array[i - 1];
+        // Adding new value to the array
+        array[index] = value;
+    }
+};
 
-    console.log(object.name);
-});
+function deleteAlgoritm(array, index) {
+    // Shifting elements to the left 
+    for (let i = index; i < array.length; i++) {
+        array[i] = array[i + 1];
+    }
+    array.length--;
+};
 
-let output = products.find(function (object) {
-    return object.id === 102;
-});
-console.log(output);
-product = products[1];
+// Query - what looking for
+function sequentialSearch(array, query) {
+    // return array.includes(query);
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === query) {
+            return query;
+        }
+    }
+};
 
-// Include - checking memory address not the actual value!!
-console.log(products.includes(product));
+// New product
+let newProduct = {
+    name: "Headphones",
+    price: 220.00,
+    qty: 2
+};
+
+// Checking add item function
+insertAlgoritm(cart, 0, newProduct);
+console.log(cart);
+
+// Cheking delete function
+deleteAlgoritm(cart, 1);
+console.log(cart);
+
+let query = cart[1];
+console.log(sequentialSearch(cart, query));
