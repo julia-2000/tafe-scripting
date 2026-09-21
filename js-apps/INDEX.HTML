@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- React, React-DOM and Babel CDN Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        #root {
+            background-color: yellow;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>React Application Example</h1>
+
+    <!-- Must have every application -->
+    <div id="root">
+    </div>
+
+    <!-- Single page application -->
+    <script type="text/babel">
+        function App() {
+            return (
+                // Code here
+                // Rutrn always have only one return element! 
+                <div>
+                    <SingleTask />
+                    <SingleTask />
+                    <SingleTask />
+                    <SingleTask />
+                    <SingleTask />
+                </div>
+
+            );
+        }
+
+        // 
+        function SingleTask() {
+            return (
+                <div>
+                    <p>lorem ipsilum</p>
+
+                    <div class="action">
+                        <button>Complete</button>
+                        <button>Delete</button>
+                    </div>
+                </div>
+            )
+        }
+
+        // This is the only code which is js not react!
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        root.render(<App />);
+    </script>
+
+</body>
+
+</html>

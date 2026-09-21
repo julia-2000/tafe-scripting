@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1 Exercise - React Components</title>
+
+    <!-- React & Babel CDN Links -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .card {
+            background: white;
+            padding: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        .btn {
+            background: #077A99;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // TODO: Build your components here!
+
+        function App() {
+            return (
+                <div>
+                    <h1>Student Dashboard</h1>
+                    {/* TODO: Add your components inside this App container */}
+                    <UserProfile />
+                    <CourseInfo />
+                </div>
+            );
+        }
+
+        function UserProfile() {
+            // Calculation  goes there and code to do anything!
+            let name = "Yuliia Dudura";
+
+            // This part is return the html
+            return (
+                <div className="card">
+                    <h3>{name}</h3>
+                    <p>
+                        Software Develoment Student</p>
+
+                    <button className="btn">View Profile</button>
+                </div>
+            )
+        };
+
+        function CourseInfo() {
+            return (
+                <div className="card">
+                    <h3>Course Details</h3>
+                    <label htmlFor="courseCode">Course Code:</label>
+                    <input id="courseCode" value="ICT50220" disabled />
+                    <br />
+                    <p>Term 2: Mobile App Development</p>
+                </div>
+            )
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+    </script>
+</body>
+
+</html>

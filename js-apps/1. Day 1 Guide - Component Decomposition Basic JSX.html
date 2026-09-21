@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 Guide: Component Decomposition & Basic JSX</title>
+    <style>
+      /* COLOUR SYSTEM & BASE STYLES */
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.65;
+        color: #262626;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        background-color: #ffffff;
+        max-width: 1100px;
+        padding: 38px;
+        margin: 28px auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* HEADER */
+      header {
+        background-color: #262626;
+        color: #ffffff;
+        padding: 40px 20px;
+        border-bottom: 7px solid #941a1d;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.1rem;
+        margin: 0 0 8px 0;
+        color: #ffffff;
+      }
+
+      header p {
+        color: #d5d5d5;
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      /* HEADINGS */
+      h2 {
+        color: #941a1d;
+        border-bottom: 2px solid #d5d5d5;
+        padding-bottom: 8px;
+        margin-top: 42px;
+      }
+
+      h3 {
+        color: #941a1d;
+        margin-top: 24px;
+      }
+
+      h4 {
+        color: #595959;
+      }
+
+      /* CALLOUT BOXES */
+      .important {
+        background-color: #f7eeee;
+        border-left: 6px solid #941a1d;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .note {
+        background-color: #f7eeee;
+        border-left: 6px solid #941a1d;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .activity {
+        background-color: #f1f1f1;
+        border-left: 6px solid #595959;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .warning {
+        background-color: #fff8e8;
+        border-left: 6px solid #a06b00;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      /* TABLES */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        border: 1px solid #d5d5d5;
+        padding: 11px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eeeeee;
+      }
+
+      /* CHECKLISTS */
+      .checklist {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .checklist li {
+        margin: 10px 0;
+        padding: 11px 14px;
+        background: #fafafa;
+        border-left: 4px solid #941a1d;
+      }
+
+      /* CODE BLOCKS */
+      code {
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 0.9em;
+      }
+
+      pre {
+        background: #262626;
+        color: #f5f5f5;
+        padding: 18px;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        color: inherit;
+      }
+
+      /* LINKS */
+      a {
+        color: #941a1d;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 700px) {
+        main {
+          margin: 0;
+          padding: 20px;
+          box-shadow: none;
+        }
+
+        header h1 {
+          font-size: 1.7rem;
+        }
+
+        table {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* FOOTER */
+      footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+        color: #595959;
+        padding: 10px 20px 35px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Day 1: Converting Task Manager to React Components</h1>
+        <p>Zero-Install Setup, Component Decomposition &amp; JSX</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="important">
+        <strong>Self-Learning Goal:</strong><br />
+        By the end of Day 1, you will refactor your Term 1 Task Manager HTML layout into modular React function components using JSX, running directly in your web browser via CDN links.
+      </div>
+
+      <h2>1. Purpose of This Guide</h2>
+      <p>In Term 1, you built web pages by writing standard HTML files and updating elements using JavaScript DOM manipulation (`document.createElement`, `appendChild`).</p>
+      <p>In Term 2, you are preparing to build mobile applications with <strong>React Native</strong>. Before jumping into mobile code, you need to understand how React splits UI into reusable components using <strong>JSX syntax</strong>.</p>
+
+      <h2>2. Paradigm Shift: Imperative vs. Declarative</h2>
+      <p>To understand why modern web and mobile developers use React, look at how UI generation changes between standard JavaScript and React:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th>Plain JS (Imperative)</th>
+            <th>React Components (Declarative)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DOM Creation</strong></td>
+            <td>Manually create nodes (`document.createElement('div')`).</td>
+            <td>Declare HTML-like structure directly using <strong>JSX</strong> inside function components.</td>
+          </tr>
+          <tr>
+            <td><strong>DOM Assembly</strong></td>
+            <td>Manually append children (`parent.appendChild(child)`).</td>
+            <td>Nest components naturally inside each other (`&lt;App&gt;&lt;Header /&gt;&lt;TaskForm /&gt;&lt;/App&gt;`).</td>
+          </tr>
+          <tr>
+            <td><strong>UI Structure</strong></td>
+            <td>Single massive HTML file with deeply nested code.</td>
+            <td>Modular components (`&lt;Header&gt;`, `&lt;TaskForm&gt;`, `&lt;SingleTask&gt;`, `&lt;SearchForm&gt;`).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <p><strong>Text Diagram: Task Manager Component Tree</strong></p>
+        <pre>
+App Container Component
+ ├── Header Component (Navigation & Title)
+ ├── TaskForm Component (Task Inputs)
+ ├── SingleTask Component (Static Task Display)
+ └── SearchForm Component (Search Layout)</pre
+        >
+      </div>
+
+      <h2>3. Running React via CDN (Zero Installation)</h2>
+      <p>For Day 1, you do not need to install Node.js, NPM, or build tools. We include React, React-DOM, and Babel directly in our HTML file using CDN script tags.</p>
+
+      <div class="activity">
+        <strong>Key CDN Script Tags:</strong>
+        <ul>
+          <li><code>react.development.js</code>: Core React framework logic.</li>
+          <li><code>react-dom.development.js</code>: Renders React components into the web browser's DOM.</li>
+          <li><code>babel.min.js</code>: Transforms JSX code in `&lt;script type="text/babel"&gt;` into regular JavaScript in real time.</li>
+        </ul>
+      </div>
+
+      <h2>4. Essential JSX Rules</h2>
+      <p>JSX looks like regular HTML, but it is parsed as JavaScript under the hood. Keep these rules in mind when converting your Term 1 HTML layout:</p>
+
+      <ul class="checklist">
+        <li>
+          ☐ Use <strong><code>className</code></strong> instead of <code>class</code> for CSS styling.
+        </li>
+        <li>
+          ☐ Use <strong><code>htmlFor</code></strong> instead of <code>for</code> inside <code>&lt;label&gt;</code> tags.
+        </li>
+        <li>☐ Explicitly close all self-closing tags (e.g., <code>&lt;input /&gt;</code>, <code>&lt;br /&gt;</code>).</li>
+        <li>☐ Component functions must start with a <strong>Capital Letter</strong> (e.g., <code>TaskForm</code>, not <code>taskForm</code>).</li>
+        <li>☐ Component return statements must return a single top-level element (e.g., wrapped in a <code>&lt;div&gt;</code> or Fragment).</li>
+      </ul>
+
+      <h2>5. Component Decomposition</h2>
+
+      <h3>1. Header Component</h3>
+      <p>Converts your Term 1 header navigation bar into a standalone component.</p>
+      <pre><code>function Header() {
+  return (
+    &lt;header&gt;
+      &lt;h1&gt;Task Manager (React Day 1)&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;a href="#home"&gt;Home&lt;/a&gt;
+        &lt;a href="#tasks"&gt;Tasks&lt;/a&gt;
+        &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+      &lt;/nav&gt;
+      &lt;br /&gt;
+      &lt;button type="button" className="theme-toggle"&gt;Dark Theme&lt;/button&gt;
+    &lt;/header&gt;
+  );
+}</code></pre>
+
+      <h3>2. Task Form Component</h3>
+      <p>Converts input controls and form fields into a reusable component block.</p>
+      <pre><code>function TaskForm() {
+  return (
+    &lt;form id="addForm" onSubmit={(e) =&gt; e.preventDefault()}&gt;
+      &lt;label htmlFor="taskName"&gt;Task Name&lt;/label&gt;
+      &lt;input id="taskName" required placeholder="e.g. Build UI Components" /&gt;
+
+      &lt;label htmlFor="taskDate"&gt;Due Date&lt;/label&gt;
+      &lt;input id="taskDate" type="date" required /&gt;
+
+      &lt;label htmlFor="taskPriority"&gt;Priority&lt;/label&gt;
+      &lt;select id="taskPriority"&gt;
+        &lt;option&gt;Low&lt;/option&gt;
+        &lt;option&gt;Medium&lt;/option&gt;
+        &lt;option&gt;High&lt;/option&gt;
+      &lt;/select&gt;
+
+      &lt;button type="submit"&gt;Add Task&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+
+      <h3>3. Single Task Display Component</h3>
+      <p>Renders a single static card representation of a task item.</p>
+      <pre><code>function SingleTask() {
+  return (
+    &lt;div className="taskarea"&gt;
+      &lt;p&gt;Name: Fix Login Bug, Due: 2026-04-10, Priority: High, Consultant: Gina Smith&lt;/p&gt;
+      &lt;div className="actions"&gt;
+        &lt;button type="button"&gt;Complete&lt;/button&gt;
+        &lt;button type="button"&gt;Delete&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+      <h2>6. Day 1 Complete Runnable Single-File Code</h2>
+      <p>Copy the code block below, save it locally as <code>react_day1.html</code>, and double-click to open it in any browser.</p>
+
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Task Manager - Day 1 (Static Components)&lt;/title&gt;
+
+  &lt;!-- React, React-DOM and Babel CDN Libraries --&gt;
+  &lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #424754; }
+    header { background-color: #077A99; color: #fff; padding: 16px; text-align: center; }
+    nav a { color: #fff; text-decoration: none; margin: 0 8px; }
+    .theme-toggle { background-color: #DDAB5E; color: #424754; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+    main { min-height: 100vh; }
+    .page-content { padding: 16px; }
+    .page-content form { width: 100%; max-width: 600px; margin: 16px auto; padding: 16px; background-color: #fff; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    .page-content input, .page-content select { width: 95%; margin-bottom: 12px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; display: block; }
+    .page-content label { display: block; margin-bottom: 4px; font-weight: bold; }
+    button { background-color: #DDAB5E; color: #424754; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin-right: 6px; }
+    .taskarea { width: 100%; max-width: 600px; margin: 16px auto; padding: 12px; background-color: #f9f9f9; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    .taskarea p { margin: 0 0 10px 0; }
+    .actions { display: flex; gap: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="root"&gt;&lt;/div&gt;
+
+  &lt;script type="text/babel"&gt;
+
+    function Header() {
+      return (
+        &lt;header&gt;
+          &lt;h1&gt;Task Manager (React Day 1)&lt;/h1&gt;
+          &lt;nav&gt;
+            &lt;a href="#home"&gt;Home&lt;/a&gt;
+            &lt;a href="#tasks"&gt;Tasks&lt;/a&gt;
+            &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+          &lt;/nav&gt;
+          &lt;br /&gt;
+          &lt;button type="button" className="theme-toggle"&gt;Dark Theme&lt;/button&gt;
+        &lt;/header&gt;
+      );
+    }
+
+    function TaskForm() {
+      return (
+        &lt;form id="addForm" onSubmit={(e) =&gt; e.preventDefault()}&gt;
+          &lt;label htmlFor="taskName"&gt;Task Name&lt;/label&gt;
+          &lt;input id="taskName" required placeholder="e.g. Build UI Components" /&gt;
+
+          &lt;label htmlFor="taskDate"&gt;Due Date&lt;/label&gt;
+          &lt;input id="taskDate" type="date" required /&gt;
+
+          &lt;label htmlFor="taskPriority"&gt;Priority&lt;/label&gt;
+          &lt;select id="taskPriority"&gt;
+            &lt;option&gt;Low&lt;/option&gt;
+            &lt;option&gt;Medium&lt;/option&gt;
+            &lt;option&gt;High&lt;/option&gt;
+          &lt;/select&gt;
+
+          &lt;label htmlFor="taskRole"&gt;Consultant Role&lt;/label&gt;
+          &lt;select id="taskRole"&gt;
+            &lt;option value=""&gt;Select a role…&lt;/option&gt;
+            &lt;option value="Software Development Team Leader"&gt;Developer&lt;/option&gt;
+            &lt;option value="Technical Support Officer Level 2"&gt;Support&lt;/option&gt;
+          &lt;/select&gt;
+
+          &lt;button type="submit"&gt;Add Task&lt;/button&gt;
+        &lt;/form&gt;
+      );
+    }
+
+    function SingleTask() {
+      return (
+        &lt;div className="taskarea"&gt;
+          &lt;p&gt;Name: Fix Login Bug, Due: 2026-04-10, Priority: High, Consultant: Gina Smith&lt;/p&gt;
+          &lt;div className="actions"&gt;
+            &lt;button type="button"&gt;Complete&lt;/button&gt;
+            &lt;button type="button"&gt;Delete&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    function SearchForm() {
+      return (
+        &lt;form id="searchForm" onSubmit={(e) =&gt; e.preventDefault()}&gt;
+          &lt;label htmlFor="searchName"&gt;Search Task&lt;/label&gt;
+          &lt;input id="searchName" placeholder="Enter task name..." /&gt;
+          &lt;button type="button"&gt;Search&lt;/button&gt;
+        &lt;/form&gt;
+      );
+    }
+
+    function App() {
+      return (
+        &lt;div&gt;
+          &lt;Header /&gt;
+          &lt;main className="page-content"&gt;
+            &lt;TaskForm /&gt;
+            &lt;SingleTask /&gt;
+            &lt;SearchForm /&gt;
+          &lt;/main&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(&lt;App /&gt;);
+
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h2>7. Self-Study Checklist for Day 1</h2>
+      <ul class="checklist">
+        <li>☐ I successfully ran the single-file React HTML page directly in my browser.</li>
+        <li>☐ I can explain the structural difference between static HTML and React function components.</li>
+        <li>☐ I converted HTML attributes to JSX properties (<code>class</code> to <code>className</code> and <code>for</code> to <code>htmlFor</code>).</li>
+        <li>☐ I ensured all self-closing HTML elements (like <code>&lt;input /&gt;</code>) are properly closed.</li>
+        <li>☐ I understand how <code>App</code> acts as a parent component rendering child components.</li>
+      </ul>
+
+      <div class="warning">
+        <strong>Looking Ahead to Day 2:</strong><br />
+        On Day 2, we will take these static components and introduce <strong>Props</strong> to pass custom dynamic task details down from arrays, use <code>.map()</code> to display lists of tasks, and explore how these exact HTML components map directly to <strong>React Native</strong> tags for
+        mobile apps.
+      </div>
+    </main>
+
+    <footer>Term 2 React Transition Guide — Day 1: Component Decomposition &amp; Basic JSX</footer>
+  </body>
+</html>
