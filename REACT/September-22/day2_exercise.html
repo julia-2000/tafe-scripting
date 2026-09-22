@@ -76,7 +76,9 @@
         function CourseCard({ code, title, term, status }) {
             return (
                 <div className="card">
-                    <h3>[{code}] {title}</h3>
+                    <h3>
+                        {code} {title}
+                    </h3>
                     <p>Scheduled: {term}</p>
                     <span className="badge">{status}</span>
                     <button type="button" className="btn">View Syllabus</button>
@@ -88,13 +90,15 @@
         // TODO 3: Build CourseList Component mapping over an array of courses
         function CourseList({ courses }) {
             return (
-                <section>
-                    {
-                        courses.map((function (course) {
-                            <CourseCard key={course.id} title={course.title} term={course.term} status={course.status} />
-                        }))
-                    }
-                </section>
+                <div>
+                    <section>
+                        {
+                            courses.map((course) => (
+                                <CourseCard key={course.id} title={course.title} term={course.term} status={course.status} />
+                            ))
+                        }
+                    </section>
+                </div>
             );
         }
 
@@ -110,7 +114,7 @@
                 <div>
                     {/* TODO 4: Assemble components here */}
                     <HeaderBar title="Courses" subtitle="Student Enrollment Units & Term Progress" />
-                    <CourseList couses={coursesData} />
+                    <CourseList courses={coursesData} />
 
                 </div>
             );
