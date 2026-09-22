@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- React, React-DOM and Babel CDN Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .parent {
+            background-color: antiquewhite;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(100px, 1fr));
+        }
+
+        h1 {
+            margin: 15PX;
+        }
+
+        .card {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            display: grid;
+            grid-template-rows: repeat(3, (minmax(20px, 0.75fr)));
+            background-color: rgb(209, 203, 203);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px;
+            box-shadow: 5px 10px 8px #888888;
+        }
+
+        .title {
+            color: rgb(78, 49, 223);
+        }
+
+        .title:hover {
+            color: rgb(183, 183, 226);
+        }
+
+        .username {
+            color: rgb(35, 36, 35);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <div style="background-color: aquamarine;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem error
+        facilis neque rem necessitatibus quod quas corporis animi aperiam earum ipsum in libero eius nulla veniam minus,
+        odit id? Nobis?</div>
+
+    <script type="text/babel">
+
+        // Map 
+        const posts = [
+            { name: "John", title: "Software Developer", subject: "This is about me become a Software Developer." },
+            { name: "Jack", title: "Web Developer", subject: "This is about me become a Web Developer." },
+            { name: "Kat", title: "Manager", subject: "This is about me become a Manager." },
+            { name: "Lucy", title: "System Analyst", subject: "This is about me become a Manager." }
+        ]
+
+        // TODO: Build your components here!
+        // Parent sent information to the child by using parametr - props
+        function App() {
+            // Map is convert each element into new thing
+            // Generate another Array - it not touch original array it will create new Array
+            // let newPosts = posts.map(
+            //     function (element) {
+            //         return (
+            //             `<div>
+            //             <div>username: ${element.name}</div>
+            //             <div>heading: ${element.title}</div>
+            //             <p>content: ${element.subject}</p>
+            //         </div>`
+            //         )
+            //     }
+            // ).join(" ")
+
+            // console.log(newPosts);
+
+            // <PostItem name="Jack" title="Welcome Back" subject="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, non nesciunt nulla alias at rem vitae nisi ullam ut, mollitia aut placeat molestias explicabo, expedita vero
+            //     impedit voluptatibus tempora laudantium?"/>
+            // <PostItem name="Bob" title="Welcome" subject="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, non nesciunt nulla alias at rem vitae nisi ullam ut, mollitia aut placeat molestias explicabo, expedita vero
+            //     impedit voluptatibus tempora laudantium?"/>
+            // <PostItem name="Mary" title="Hello" subject="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, non nesciunt nulla alias at rem vitae nisi ullam ut, mollitia aut placeat molestias explicabo, expedita vero
+            //     impedit voluptatibus tempora laudantium?"/>
+
+            // let app = {
+            //     padding: "20px",
+            //     background: "bisque"
+            // }
+
+            return (
+                <div style={{ padding: "20px", background: "bisque" }}>
+                    <h1>Social Media</h1>
+                    {posts.map(
+                        function (post) {
+                            return (
+                                <PostItem name={post.name} title={post.title} subject={post.subject} />
+                            )
+                        }
+                    )}
+
+                </div>
+            );
+        }
+
+        // let object = {
+        //     name: "Kay",
+        //     title: "Title",
+        //     subject: "Lorem"
+        // }
+
+        // One of the option to add style
+        // function PostItem(props) {
+        //     return (
+        //         <div className="card">
+
+        //             <h3 className="title">{props.title}</h3>
+        //             <p className="description">{props.subject}</p>
+        //             <p className="username">Username: {props.name}</p>
+        //         </div>
+
+        //     );
+        // }
+
+        function PostItem(props) {
+            return (
+                <div style={{
+                    display: "grid", gridTemplateRows: "repeat(3, (minmax(20px, 0.75fr)))",
+                    backgroundColor: "rgb(209, 203, 203)", borderRadius: "15px", padding: "15px", margin: "20px", boxShadow: "5px 10px 8px #888888"
+                }}>
+                    <h3 style={{ color: "rgb(78, 49, 223)" }}>{props.title}</h3>
+                    <p style={{ color: "rgb(68, 89, 23)", fontStyle: "semibold" }}>{props.subject}</p>
+                    <p style={{ color: "rgb(35, 36, 35)", fontStyle: "bold" }}>Username: {props.name}</p>
+                </ div >
+            );
+        }
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 Exercise: Building React Components</title>
+    <style>
+      /* COLOUR SYSTEM & BASE STYLES */
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.65;
+        color: #262626;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        background-color: #ffffff;
+        max-width: 1100px;
+        padding: 38px;
+        margin: 28px auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* HEADER */
+      header {
+        background-color: #262626;
+        color: #ffffff;
+        padding: 40px 20px;
+        border-bottom: 7px solid #941a1d;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.1rem;
+        margin: 0 0 8px 0;
+        color: #ffffff;
+      }
+
+      header p {
+        color: #d5d5d5;
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      /* HEADINGS */
+      h2 {
+        color: #941a1d;
+        border-bottom: 2px solid #d5d5d5;
+        padding-bottom: 8px;
+        margin-top: 42px;
+      }
+
+      h3 {
+        color: #941a1d;
+        margin-top: 24px;
+      }
+
+      /* CALLOUT BOXES */
+      .important {
+        background-color: #f7eeee;
+        border-left: 6px solid #941a1d;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .activity {
+        background-color: #f1f1f1;
+        border-left: 6px solid #595959;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      /* CHECKLISTS */
+      .checklist {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .checklist li {
+        margin: 10px 0;
+        padding: 11px 14px;
+        background: #fafafa;
+        border-left: 4px solid #941a1d;
+      }
+
+      /* CODE BLOCKS */
+      code {
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 0.9em;
+      }
+
+      pre {
+        background: #262626;
+        color: #f5f5f5;
+        padding: 18px;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        color: inherit;
+      }
+
+      /* FOOTER */
+      footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+        color: #595959;
+        padding: 10px 20px 35px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Day 1 In-Class Practical Exercise</h1>
+        <p>Converting HTML to Static React Function Components &amp; JSX</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="important">
+        <strong>Instructions:</strong><br />
+        Create a new file named <code>day1_exercise.html</code> on your desktop. Copy the starter template provided in Task 1 below and complete the three tasks directly inside the <code>&lt;script type="text/babel"&gt;</code> block.
+      </div>
+
+      <h2>Task 1: Starter Template setup</h2>
+      <p>Copy this base HTML template into your <code>day1_exercise.html</code> file and open it in your browser.</p>
+
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Day 1 Exercise - React Components&lt;/title&gt;
+
+  &lt;!-- React &amp; Babel CDN Links --&gt;
+  &lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    .card { background: white; padding: 16px; border: 1px solid #ccc; border-radius: 6px; max-width: 500px; margin: 10px 0; }
+    .btn { background: #077A99; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+    .footer-text { font-size: 0.85rem; color: #666; margin-top: 20px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="root"&gt;&lt;/div&gt;
+
+  &lt;script type="text/babel"&gt;
+
+    // TODO: Build your components here!
+
+    function App() {
+      return (
+        &lt;div&gt;
+          &lt;h1&gt;Student Dashboard&lt;/h1&gt;
+          {/* TODO: Add your components inside this App container */}
+        &lt;/div&gt;
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(&lt;App /&gt;);
+
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h2>Task 2: Build a UserProfile Component</h2>
+      <div class="activity">
+        Create a component named <code>UserProfile</code> that returns a static profile card containing:
+        <ul>
+          <li>A heading <code>&lt;h3&gt;</code> with your name.</li>
+          <li>A paragraph displaying your role (e.g., <code>Role: Software Development Student</code>).</li>
+          <li>A styled button with text <code>"View Profile"</code> using <code>className="btn"</code>.</li>
+          <li>A card container wrapper using <code>className="card"</code>.</li>
+        </ul>
+      </div>
+
+      <h2>Task 3: Build a CourseInfo Component &amp; Fix JSX Errors</h2>
+      <div class="activity">
+        Convert the following faulty HTML snippet into a valid React Component named <code>CourseInfo</code>:
+        <pre><code>&lt;!-- Convert this HTML snippet into JSX inside CourseInfo component --&gt;
+&lt;div class="card"&gt;
+  &lt;h3&gt;Course Details&lt;/h3&gt;
+  &lt;label for="courseCode"&gt;Course Code:&lt;/label&gt;
+  &lt;input id="courseCode" value="ICT50220" disabled&gt;
+  &lt;br&gt;
+  &lt;p&gt;Term 2: Mobile App Development&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+        <p><strong>JSX Syntax Checklist to Fix:</strong></p>
+        <ul class="checklist">
+          <li>☐ Replace <code>class="..."</code> with <code>className="..."</code>.</li>
+          <li>☐ Replace <code>for="..."</code> with <code>htmlFor="..."</code>.</li>
+          <li>☐ Ensure self-closing tags like <code>&lt;input&gt;</code> and <code>&lt;br&gt;</code> are explicitly closed with a trailing slash (<code>&lt;input /&gt;</code>, <code>&lt;br /&gt;</code>).</li>
+        </ul>
+      </div>
+
+      <h2>Task 4: Assemble in the App Component</h2>
+      <p>Include both <code>&lt;UserProfile /&gt;</code> and <code>&lt;CourseInfo /&gt;</code> components inside your main <code>&lt;App /&gt;</code> component and refresh your page to verify the output.</p>
+    </main>
+
+    <footer>Day 1 Student Practical Exercise — React Components &amp; JSX Fundamentals</footer>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 2 Guide: Components, Props & React Native Bridge</title>
+    <style>
+      /* COLOUR SYSTEM & BASE STYLES */
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.65;
+        color: #262626;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        background-color: #ffffff;
+        max-width: 1100px;
+        padding: 38px;
+        margin: 28px auto;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* HEADER */
+      header {
+        background-color: #262626;
+        color: #ffffff;
+        padding: 40px 20px;
+        border-bottom: 7px solid #941a1d;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.1rem;
+        margin: 0 0 8px 0;
+        color: #ffffff;
+      }
+
+      header p {
+        color: #d5d5d5;
+        margin: 0;
+        font-size: 1.1rem;
+      }
+
+      /* HEADINGS */
+      h2 {
+        color: #941a1d;
+        border-bottom: 2px solid #d5d5d5;
+        padding-bottom: 8px;
+        margin-top: 42px;
+      }
+
+      h3 {
+        color: #941a1d;
+        margin-top: 24px;
+      }
+
+      h4 {
+        color: #595959;
+      }
+
+      /* CALLOUT BOXES */
+      .important {
+        background-color: #f7eeee;
+        border-left: 6px solid #941a1d;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .note {
+        background-color: #f7eeee;
+        border-left: 6px solid #941a1d;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .activity {
+        background-color: #f1f1f1;
+        border-left: 6px solid #595959;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      .warning {
+        background-color: #fff8e8;
+        border-left: 6px solid #a06b00;
+        padding: 18px;
+        margin: 20px 0;
+      }
+
+      /* TABLES */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        border: 1px solid #d5d5d5;
+        padding: 11px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #eeeeee;
+      }
+
+      /* CHECKLISTS */
+      .checklist {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .checklist li {
+        margin: 10px 0;
+        padding: 11px 14px;
+        background: #fafafa;
+        border-left: 4px solid #941a1d;
+      }
+
+      /* CODE BLOCKS */
+      code {
+        background: #eee;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, Monaco, monospace;
+        font-size: 0.9em;
+      }
+
+      pre {
+        background: #262626;
+        color: #f5f5f5;
+        padding: 18px;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+        color: inherit;
+      }
+
+      /* RESPONSIVE DESIGN */
+      @media (max-width: 700px) {
+        main {
+          margin: 0;
+          padding: 20px;
+          box-shadow: none;
+        }
+
+        header h1 {
+          font-size: 1.7rem;
+        }
+
+        table {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* FOOTER */
+      footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        text-align: center;
+        color: #595959;
+        padding: 10px 20px 35px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Day 2: Props, List Mapping &amp; React Native Bridge</h1>
+        <p>Term 2 Transition — Dynamic Data Flow &amp; Mobile Component Mapping</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="important">
+        <strong>Self-Learning Goal:</strong><br />
+        On Day 2, you will learn how to make React components reusable by passing custom data using <strong>Props</strong>, render dynamic lists using <code>.map()</code>, and see how these exact components map to React Native for mobile apps next term.
+      </div>
+
+      <h2>1. What are Props?</h2>
+      <p>Components act like customizable building blocks. Just as HTML tags accept attributes (like <code>src="..."</code> or <code>href="..."</code>), React components accept <strong>Props</strong> (short for properties).</p>
+      <p>Props allow a parent component (like <code>App</code>) to pass information down to a child component (like <code>TaskItem</code>).</p>
+
+      <div class="activity"><strong>Key Rule:</strong> Props are <strong>read-only</strong>. A child component reads the props it receives, but cannot modify them directly.</div>
+
+      <h2>2. Rendering Lists with Array <code>.map()</code></h2>
+      <p>In standard JavaScript, rendering an array required writing a <code>for</code> loop and manually creating DOM elements. In React, we use the JavaScript array method <code>.map()</code> inside curly braces to convert each data object into a JSX component.</p>
+
+      <pre><code>function TaskList({ tasks }) {
+  return (
+    &lt;section id="tasksList"&gt;
+      {tasks.map((task) =&gt; (
+        &lt;TaskItem
+          key={task.id}
+          name={task.name}
+          date={task.date}
+          priority={task.priority}
+          consultant={task.consultant}
+          completed={task.completed}
+        /&gt;
+      ))}
+    &lt;/section&gt;
+  );
+}</code></pre>
+
+      <div class="note">
+        <strong>Why is the <code>key</code> prop necessary?</strong><br />
+        React requires a unique <code>key</code> prop for list items so it can keep track of elements efficiently when updating the page.
+      </div>
+
+      <h2>3. The Bridge to Term 2: React Web to React Native</h2>
+      <p>The component structure and props patterns you are practicing today in React Web are <strong>100% identical</strong> to what you will write in React Native next term for mobile apps. The main difference is the tags used to render the UI.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>UI Element</th>
+            <th>React Web Tag (Term 1 End)</th>
+            <th>React Native Mobile Tag (Term 2)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Container Box</strong></td>
+            <td><code>&lt;div className="..."&gt;</code></td>
+            <td><code>&lt;View style={...}&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Text Output</strong></td>
+            <td><code>&lt;p&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;h1&gt;</code></td>
+            <td><code>&lt;Text&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Clickable Button</strong></td>
+            <td><code>&lt;button onClick={...}&gt;</code></td>
+            <td><code>&lt;TouchableOpacity onPress={...}&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>Text Input Field</strong></td>
+            <td><code>&lt;input type="text" /&gt;</code></td>
+            <td><code>&lt;TextInput /&gt;</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. Self-Study Checklist for Day 2</h2>
+      <ul class="checklist">
+        <li>☐ I can pass dynamic props into child components.</li>
+        <li>☐ I can iterate through an array of objects and render components using <code>.map()</code>.</li>
+        <li>☐ I included a unique <code>key</code> prop when rendering a list of items.</li>
+        <li>☐ I can map React Web tags (<code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;button&gt;</code>) to React Native tags (<code>&lt;View&gt;</code>, <code>&lt;Text&gt;</code>, <code>&lt;TouchableOpacity&gt;</code>).</li>
+      </ul>
+
+      <div class="warning">
+        <strong>Term 2 Transition Complete!</strong><br />
+        You now understand how components, JSX, and props work together. When you start Term 2, you will use these exact principles to build mobile applications for iOS and Android!
+      </div>
+    </main>
+
+    <footer>Term 2 React Transition Guide — Day 2: Props, List Mapping &amp; React Native Mobile Bridge</footer>
+  </body>
+</html>

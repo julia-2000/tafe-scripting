@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 2 Exercise: Props & List Mapping</title>
+  <style>
+    /* COLOUR SYSTEM & BASE STYLES */
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      color: #262626;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      background-color: #ffffff;
+      max-width: 1100px;
+      padding: 38px;
+      margin: 28px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* HEADER */
+    header {
+      background-color: #262626;
+      color: #ffffff;
+      padding: 40px 20px;
+      border-bottom: 7px solid #941a1d;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.1rem;
+      margin: 0 0 8px 0;
+      color: #ffffff;
+    }
+
+    header p {
+      color: #d5d5d5;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    /* HEADINGS */
+    h2 {
+      color: #941a1d;
+      border-bottom: 2px solid #d5d5d5;
+      padding-bottom: 8px;
+      margin-top: 42px;
+    }
+
+    h3 {
+      color: #941a1d;
+      margin-top: 24px;
+    }
+
+    /* CALLOUT BOXES */
+    .important {
+      background-color: #f7eeee;
+      border-left: 6px solid #941a1d;
+      padding: 18px;
+      margin: 20px 0;
+    }
+
+    .activity {
+      background-color: #f1f1f1;
+      border-left: 6px solid #595959;
+      padding: 18px;
+      margin: 20px 0;
+    }
+
+    /* CHECKLISTS */
+    .checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .checklist li {
+      margin: 10px 0;
+      padding: 11px 14px;
+      background: #fafafa;
+      border-left: 4px solid #941a1d;
+    }
+
+    /* CODE BLOCKS */
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.9em;
+    }
+
+    pre {
+      background: #262626;
+      color: #f5f5f5;
+      padding: 18px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      color: #595959;
+      padding: 10px 20px 35px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Day 2 In-Class Practical Exercise</h1>
+      <p>Passing Props, List Mapping with <code>.map()</code> &amp; React Native Concept Mapping</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="important">
+      <strong>Instructions:</strong><br>
+      Create a new file named <code>day2_exercise.html</code> on your desktop. Copy the starter template provided in Task 1 below and complete the tasks directly inside the <code>&lt;script type="text/babel"&gt;</code> block.
+    </div>
+
+    <h2>Task 1: Starter Template Setup</h2>
+    <p>Copy this base HTML template into your <code>day2_exercise.html</code> file and open it in your web browser.</p>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Day 2 Exercise - Props &amp; Mapping&lt;/title&gt;
+
+  &lt;!-- React &amp; Babel CDN Links --&gt;
+  &lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;
+
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    .header-box { background: #077A99; color: white; padding: 12px; text-align: center; border-radius: 4px; }
+    .card { background: white; padding: 16px; border: 1px solid #ccc; border-radius: 6px; max-width: 500px; margin: 10px 0; }
+    .badge { background: #DDAB5E; color: #262626; padding: 3px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+    .btn { background: #077A99; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-top: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="root"&gt;&lt;/div&gt;
+
+  &lt;script type="text/babel"&gt;
+
+    // TODO 1: Build HeaderBar Component accepting 'title' and 'subtitle' props
+
+    // TODO 2: Build CourseCard Component accepting 'code', 'title', 'term', and 'status' props
+
+    // TODO 3: Build CourseList Component mapping over an array of courses
+
+    function App() {
+      const coursesData = [
+        { id: 101, code: "ICT50220", title: "Web Development Fundamentals", term: "Term 1", status: "Completed" },
+        { id: 102, code: "ICT50220", title: "React & UI Architecture", term: "Term 2", status: "In Progress" },
+        { id: 103, code: "ICT50220", title: "Mobile App Development with React Native", term: "Term 2", status: "Upcoming" }
+      ];
+
+      return (
+        &lt;div&gt;
+          {/* TODO 4: Assemble components here */}
+        &lt;/div&gt;
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(&lt;App /&gt;);
+
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <h2>Task 2: Build a Configurable HeaderBar Component</h2>
+    <div class="activity">
+      Create a <code>HeaderBar</code> component that accepts custom text via <strong>props</strong>:
+      <ul>
+        <li>Destructure two props: <code>title</code> and <code>subtitle</code>.</li>
+        <li>Render the <code>title</code> in an <code>&lt;h1&gt;</code> tag and <code>subtitle</code> in a <code>&lt;p&gt;</code> tag inside a container with <code>className="header-box"</code>.</li>
+      </ul>
+    </div>
+
+    <h2>Task 3: Build a CourseCard Component using Props</h2>
+    <div class="activity">
+      Create a reusable <code>CourseCard</code> component that accepts individual course details:
+      <ul>
+        <li>Destructure props: <code>code</code>, <code>title</code>, <code>term</code>, and <code>status</code>.</li>
+        <li>Display <code>code</code> and <code>title</code> inside an <code>&lt;h3&gt;</code> element.</li>
+        <li>Display <code>term</code> in a paragraph and <code>status</code> inside a styled badge (<code>className="badge"</code>).</li>
+        <li>Include a button with text <code>"View Syllabus"</code> (<code>className="btn"</code>).</li>
+        <li>Wrap the output in a card div (<code>className="card"</code>).</li>
+      </ul>
+    </div>
+
+    <h2>Task 4: Build CourseList with Array <code>.map()</code></h2>
+    <div class="activity">
+      Create a <code>CourseList</code> component that receives the <code>courses</code> array as a prop:
+      <ul>
+        <li>Use <code>courses.map()</code> to render a <code>&lt;CourseCard /&gt;</code> for every item in the array.</li>
+        <li>Pass all necessary course properties (<code>code</code>, <code>title</code>, <code>term</code>, <code>status</code>) as props into <code>&lt;CourseCard /&gt;</code>.</li>
+        <li><strong>Crucial:</strong> Remember to pass a unique <code>key={course.id}</code> to each card inside the list.</li>
+      </ul>
+    </div>
+
+    <h2>Task 5: React Native Mental Mapping Exercise</h2>
+    <div class="activity">
+      Before running your code, complete this quick self-check mapping HTML elements to React Native elements for Term 2:
+      <ul class="checklist">
+        <li>☐ <code>&lt;div className="card"&gt;</code> translates to <strong><code>&lt;View style={styles.card}&gt;</code></strong></li>
+        <li>☐ <code>&lt;h3&gt;</code> and <code>&lt;p&gt;</code> translate to <strong><code>&lt;Text&gt;</code></strong></li>
+        <li>☐ <code>&lt;button className="btn"&gt;</code> translates to <strong><code>&lt;TouchableOpacity&gt;&lt;Text&gt;...&lt;/Text&gt;&lt;/TouchableOpacity&gt;</code></strong></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    Day 2 Student Practical Exercise — React Props, List Mapping &amp; Mobile Preparation
+  </footer>
+
+</body>
+</html>

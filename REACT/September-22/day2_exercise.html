@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Exercise - Props & Mapping</title>
+
+    <!-- React & Babel CDN Links -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+
+        .header-box {
+            background: #077A99;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .card {
+            background: white;
+            padding: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            max-width: 500px;
+            margin: 10px 0;
+        }
+
+        .badge {
+            background: #DDAB5E;
+            color: #262626;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: #077A99;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // TODO 1: Build HeaderBar Component accepting 'title' and 'subtitle' props
+        function HeaderBar({ title, subtitle }) {
+            return (
+                <div className="header-box">
+                    <h1>{title}</h1>
+                    <p>{subtitle}</p>
+                </div>
+            )
+        }
+
+        // TODO 2: Build CourseCard Component accepting 'code', 'title', 'term', and 'status' props
+        function CourseCard({ code, title, term, status }) {
+            return (
+                <div className="card">
+                    <h3>[{code}] {title}</h3>
+                    <p>Scheduled: {term}</p>
+                    <span className="badge">{status}</span>
+                    <button type="button" className="btn">View Syllabus</button>
+                </div>
+            )
+        }
+
+
+        // TODO 3: Build CourseList Component mapping over an array of courses
+        function CourseList({ courses }) {
+            return (
+                <section>
+                    {
+                        courses.map((function (course) {
+                            <CourseCard key={course.id} title={course.title} term={course.term} status={course.status} />
+                        }))
+                    }
+                </section>
+            );
+        }
+
+        function App() {
+            const coursesData = [
+                { id: 101, code: "ICT50220", title: "Web Development Fundamentals", term: "Term 1", status: "Completed" },
+                { id: 102, code: "ICT50220", title: "React & UI Architecture", term: "Term 2", status: "In Progress" },
+                { id: 103, code: "ICT50220", title: "Mobile App Development with React Native", term: "Term 2", status: "Upcoming" }
+            ];
+
+
+            return (
+                <div>
+                    {/* TODO 4: Assemble components here */}
+                    <HeaderBar title="Courses" subtitle="Student Enrollment Units & Term Progress" />
+                    <CourseList couses={coursesData} />
+
+                </div>
+            );
+        }
+
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+
+    </script>
+</body>
+
+</html>
